@@ -42,7 +42,60 @@ architecture
 
 * IBM Bluemix account. [Sign up][bluemix_signup_url] for Bluemix, or use an existing account.
 
-## Running the app on top of GitHub Pages and OpenWhisk
+## Deploying OpenWhisk Emoting (almost) automatically in Bluemix
+
+OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with few clicks. If you want to deploy it manually, you can skip this section.
+
+1. **Ensure your organization has enough quota for one service.**
+
+1. Click ***Deploy to Bluemix*** to start the Bluemix DevOps wizard:
+
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/openwhisk-emoting&branch=master)
+
+1. Select the **GitHub** box.
+
+1. Decide whether you want to fork/clone the OpenWhisk Emoting repository.
+
+1. If you decide to Clone, set a name for your GitHub repository.
+
+1. Select the **Delivery Pipeline** box.
+
+1. Select the organization and space where you want to deploy the app. Keep *US South* for the region as OpenWhisk is only available there today.
+
+  > :warning: Make sure the organization and the space have no *space* in their names.
+
+1. Click **Create**.
+
+1. Select the Delivery Pipeline named **openwhisk-emoting**.
+
+1. Wait for the Deploy job to complete.
+
+1. When the job complete, look at its log and make note of the API Gateway endpoint where the OpenWhisk API has been deployed. You should see log statements like:
+
+   ```
+   ok: created API /emoting/1/questions PUT for action /_/emoting/questionCreate
+   https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1/questions
+   ok: created API /emoting/1/questions GET for action /_/emoting/questionRead
+   https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1/questions
+   ok: created API /emoting/1/stats GET for action /_/emoting/questionStats
+   https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1/stats
+   ok: created API /emoting/1/ratings PUT for action /_/emoting/ratingCreate
+   https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1/ratings
+   ```
+
+   **https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1** is the API Gateway endpoint in this example.
+
+1. Checkout the code from your own openwhisk-emoting repository.
+
+1. Edit `docs/js/emoting.js` and change the `apiUrl` value to your API base path.
+
+1. Commit the `docs/js/emoting.js` file.
+
+1. Enable GitHub Pages on your repo. When doing so, select the option to use the `docs` folder in the master branch.
+
+   ![](xdocs/githubpages.png)
+
+## Deploying OpenWhisk Emoting manually in Bluemix
 
 1. Clone or fork the repository https://github.com/IBM-Bluemix/openwhisk-emoting
 
@@ -78,7 +131,9 @@ architecture
    ./deploy.sh --installApi
    ```
 
-1. Make note of your API base path in the output. The base path looks like `https://123456-abcd-7890123-gws.api-gw.mybluemix.net/emoting/1`.
+   You may need to use `wsk bluemix login` so that the `wsk` command line can create the API in Bluemix.
+
+1. Make note of your API Gateway base path in the output. The base path looks like `https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/abcdeff9d9300320200dhcdbcddc/emoting/1`.
 
 1. Edit `docs/js/emoting.js` and change the `apiUrl` value to your API base path.
 
