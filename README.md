@@ -10,9 +10,7 @@ You are giving this presentation and as attendees leave the room you'd like to g
 
 ## Overview
 
-  <img src="xdocs/emoting-question.png" height="200"/>
-  <img src="xdocs/emoting-answer.png" height="200"/>
-  <img src="xdocs/emoting-admin.png" height="200"/>
+<img src="xdocs/emoting-question.png" height="200"/><img src="xdocs/emoting-answer.png" height="200"/><img src="xdocs/emoting-admin.png" height="200"/>
 
 Built using the IBM Bluemix, the application uses:
 * IBM Bluemix OpenWhisk to host the backend
