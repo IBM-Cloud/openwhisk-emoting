@@ -1,7 +1,5 @@
 # Capture audience feedback with a serverless app
 
-:warning: WORK IN PROGRESS
-
 [![Build Status](https://travis-ci.org/IBM-Bluemix/openwhisk-emoting.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/openwhisk-emoting) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/openwhisk-emoting/badge.svg?branch=master)](https://coveralls.io/github/IBM-Bluemix/openwhisk-emoting?branch=master)
 
 You are giving this presentation and as attendees leave the room you'd like to get a quick feel about how you did. *Emoting* mimics the smiley terminals you may see at the airport security or whenever you are queueing somewhere.
@@ -60,7 +58,7 @@ OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with
 
 1. Select the organization and space where you want to deploy the app. Keep *US South* for the region as OpenWhisk is only available there today.
 
-  > :warning: Make sure the organization and the space have no *space* in their names.
+   > :warning: Make sure the organization and the space have no *space* in their names.
 
 1. Click **Create**.
 
@@ -169,7 +167,6 @@ OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with
 |[**question.read.js**](actions/question.read.js)| Returns the text of a question based on its ID. |
 |[**question.stats.js**](actions/question.stats.js)| Returns results about a given question. |
 |[**rating.create.js**](actions/rating.create.js)| Called when a user taps on one of the rating. |
-|[**options.js**](actions/options.js)| Implements the OPTIONS verb for the actions exposed through the OpenWhisk API Gateway. |
 |[**deploy.sh**](deploy.sh)|Helper script to install, uninstall, update the OpenWhisk actions used by the application.|
 
 ## License

@@ -19,7 +19,7 @@ source local.env
 PACKAGE_NAME=emoting
 
 function usage() {
-  echo "Usage: $0 [--install,--uninstall,--update,--env]"
+  echo "Usage: $0 [--install,--uninstall,--update,--installApi,--uninstallApi,--env]"
 }
 
 function install() {
