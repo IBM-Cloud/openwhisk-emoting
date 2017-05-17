@@ -1,0 +1,17 @@
+{
+  "docs": [
+    {
+      "_id": "_design/ratings",
+      "views": {
+        "all": {
+          "map": "function (doc) {\n  emit([doc.question, doc.value], 1);\n}"
+        },
+        "stats": {
+          "map": "function (doc) {\n  emit([doc.question, doc.value], 1);\n}",
+          "reduce": "_sum"
+        }
+      },
+      "language": "javascript"
+    }
+  ]
+}

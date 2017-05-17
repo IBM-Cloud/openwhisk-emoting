@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+  <link rel="icon" type="image/png" href="images/png/favicon.png">
+
+  <!-- icons for home screen shortcuts to questions -->
+  <link rel="apple-touch-icon" href="images/png/logo-60x60.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="images/png/logo-76x76.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="images/png/logo-120x120.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="images/png/logo-152x152.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/csshake/1.5.1/csshake.min.css" />
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/emoting.css">
+
+  <title>Capture audience feedback - emoting</title>
+</head>
+
+<body>
+  <section id="section-loading" class="hero is-fullheight">
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <img src="images/svg/logo.svg" class="fa-spin" width="128"/>
+        <div>
+          <span>Loading...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="empty-layout" class="hero is-fullheight">
+    <div class="hero-body" id="empty-layout-body">
+    </div>
+    <div class="hero-foot">
+      <div class="container has-text-centered">
+        powered by <a href="">emoting</a> - made by <a href="https://twitter.com/l2fprod">fred</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="default-layout" class="hero is-fullheight">
+    <div class="hero-head">
+      <header class="nav">
+        <div class="container">
+          <div class="nav-left">
+            <a href="" class="nav-item">
+              <img src="images/svg/logo.svg" class="logo" /> &nbsp; emoting
+            </a>
+          </div>
+          <div class="nav-right">
+            <a href="https://github.com/IBM-Bluemix/openwhisk-emoting" class="nav-item"><span class="icon"><i class="fa fa-github"></i></span></a>
+            <a href="https://twitter.com/l2fprod" class="nav-item"><span class="icon"><i class="fa fa-twitter"></i></span></a>
+          </div>
+        </div>
+      </header>
+    </div>
+    <div class="hero-body" id="default-layout-body">
+      <!-- placeholder for page body -->
+    </div>
+    <div class="hero-foot">
+      <div class="container has-text-centered">
+        made by <a href="https://twitter.com/l2fprod">fred</a>
+      </div>
+    </div>
+  </section>
+
+  <script id="home-template" type="text/x-handlebars-template">
+    <div class="container has-text-centered">
+      <div class="tagline">SIMPLY. CAPTURE. FEEDBACK.</div>
+      <form id="questionCreate" data-toggle="validator">
+        <p class="control has-addons">
+          <input type="text" class="input new-event" name="title" id="title" placeholder="Ask a question" required autofocus/>
+          <button type="submit" class="button is-success new-event">Get Feedback</button>
+        </p>
+      </form>
+      <div class="bottomline">
+        Looking for inspiration? How about
+        <br/>
+        <a href="javascript:setSampleQuestion('Did you like my talk?');">Did you like my talk?</a> or
+        <a href="javascript:setSampleQuestion('How did I do?');">How did I do?</a>
+      </div>
+    </div>
+  </script>
+
+  <script id="admin-template" type="text/x-handlebars-template">
+    <div class="container">
+      <div>
+        <h1 class="title">Administration</h1>
+        <h2 class="subtitle">{{question.title}}</h2>
+        <hr/>
+      </div>
+
+      <article class="message is-danger">
+        <div class="message-header">
+          Don't lose your stats!
+        </div>
+        <div class="message-body">
+          This is the admin page for your feedback.
+          This link is unique and we won't send it back to you.
+          <strong>Bookmark it now!</strong>
+        </div>
+      </article>
+
+      <div class="content">
+        When you are ready to collect feedback, share <strong><a href="{{url}}">the following link</a></strong> with your audience:
+        <p class="control question-url has-addons">
+          <input class="input is-medium is-info" id="questionUrl" type="text" value={{url}} readonly>
+          <button class="button is-medium is-info copyToClipboard" data-clipboard-target="#questionUrl">Copy</button>
+        </p>
+      </div>
+
+      <div class="content">
+        <h3>Current Results ({{total}})</h3>
+        <div class="columns">
+          <div class="column is-2 has-text-right">
+            <span class="icon"><img src="images/svg/verygood.svg" /></span>
+          </div>
+          <div class="column">
+            <progress class="progress progress-verygood is-medium" value="{{ratings.[verygood].percent}}" max="100"></progress>
+          </div>
+          <div class="column is-2">
+            {{ratings.[verygood].percent}}% ({{ratings.[verygood].value}})
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-2 has-text-right">
+            <span class="icon"><img src="images/svg/good.svg" /></span>
+          </div>
+          <div class="column">
+            <progress class="progress progress-good is-medium" value="{{ratings.[good].percent}}" max="100"></progress>
+          </div>
+          <div class="column is-2">
+            {{ratings.[good].percent}}% ({{ratings.[good].value}})
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-2 has-text-right">
+            <span class="icon"><img src="images/svg/bad.svg" /></span>
+          </div>
+          <div class="column">
+            <progress class="progress progress-bad is-medium" value="{{ratings.[bad].percent}}" max="100"></progress>
+          </div>
+          <div class="column is-2">
+            {{ratings.[bad].percent}}% ({{ratings.[bad].value}})
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column is-2 has-text-right">
+            <span class="icon"><img src="images/svg/verybad.svg" /></span>
+          </div>
+          <div class="column">
+            <progress class="progress progress-verybad is-medium" value="{{ratings.[verybad].percent}}" max="100"></progress>
+          </div>
+          <div class="column is-2">
+            {{ratings.[verybad].percent}}% ({{ratings.[verybad].value}})
+          </div>
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script id="question-template" type="text/x-handlebars-template">
+    <div class="container is-fluid has-text-centered">
+      <h1 class="event-title" id="question-title">{{question.title}}</h1>
+      <div class="columns ratings">
+        <div class="column">
+          <img class="rating" data-shake="shake-vertical" data-value="verygood" src="images/svg/verygood.svg" width="100%" />
+        </div>
+        <div class="column">
+          <img class="rating" data-shake="shake-vertical" data-value="good" src="images/svg/good.svg" width="100%" />
+        </div>
+        <div class="column">
+          <img class="rating" data-shake="shake-horizontal" data-value="bad" src="images/svg/bad.svg" width="100%" />
+        </div>
+        <div class="column">
+          <img class="rating" data-shake="shake-horizontal" data-value="verybad" src="images/svg/verybad.svg" width="100%" />
+        </div>
+      </div>
+    </div>
+  </script>
+
+  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="js/emoting.js"></script>
+  <script src="js/home.js"></script>
+  <script src="js/question.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>

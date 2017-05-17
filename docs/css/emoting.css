@@ -1,0 +1,132 @@
+@import url(//fonts.googleapis.com/css?family=Raleway);
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0
+}
+
+b, strong {
+  font-weight: 900;
+}
+
+.logo {
+  width: 24px;
+  height: 24px;
+}
+
+#section-loading,
+#section-home,
+#section-admin,
+#section-question {
+  display: none;
+}
+
+/**
+ * HOME
+ */
+input.new-event {
+  height: 60px;
+  line-height: 30px;
+  font-size: 30px;
+  width: 100% !important;
+}
+
+button.new-event {
+  height: 60px;
+  font-size: 30px;
+}
+
+.tagline {
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+.bottomline {
+  font-size: 20px;
+  margin-top: 40px;
+}
+
+/**
+ * QUESTION
+ */
+
+.event-title {
+  font-size: 4.125em;
+  margin-bottom: 50px;
+}
+
+.event-thankyou {
+  display: none;
+  font-size: 4.125em;
+  margin-bottom: 50px;
+}
+
+.rating:hover {
+  cursor: pointer;
+}
+
+.rating-voted {
+  opacity: 0.2;
+}
+
+/**
+ * ADMIN
+ */
+.progress-verygood::-webkit-progress-value {
+  background-color: #189834;
+}
+
+.progress-good::-webkit-progress-value {
+  background-color: #7cb34d;
+}
+
+.progress-bad::-webkit-progress-value {
+  background-color: #d96251;
+}
+
+.progress-verybad::-webkit-progress-value {
+  background-color: #de2d2d;
+}
+
+.question-url {
+  margin: 30px;
+}
+
+.question-url input {
+  width: 100% !important;
+}
+
+/**
+ *
+ */
+.message.is-danger .message-body {
+  color: #602121;
+}
+
+.notification.is-success {
+  background-color: rgba(35, 209, 96, 0.55);
+  color: #3a3a3a;
+}
+
+a {
+  color: #1147a7;
+}
+
+.hero-foot {
+  padding: 12px;
+}
+
+/**
+ * Question on a small screen
+ */
+@media (max-width: 460px) {
+  .ratings div {
+    display: inline-block;
+  }
+}
