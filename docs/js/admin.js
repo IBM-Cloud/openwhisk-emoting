@@ -5,7 +5,7 @@ new Clipboard('.copyToClipboard');
 
 function showAdmin(questionId, adminUuid) {
   console.log('Retrieving admin page with id', questionId, 'and admin', adminUuid);
-  emoting.stats(questionId, adminUuid).done((result) => {
+  emoting.stats(questionId, adminUuid).done(function(result) {
     console.log('[OK]', result);
 
     result.url = `${window.location.origin}${window.location.pathname}#/${result.question.id}`;

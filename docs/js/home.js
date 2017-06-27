@@ -12,13 +12,13 @@ function setSampleQuestion(title) {
 }
 
 // create new question
-$(document).on('submit', '#questionCreate', (e) => {
+$(document).on('submit', '#questionCreate', function(e) {
   e.preventDefault();
 
   const questionTitle = $('#title').val();
   console.log('Submitting question', questionTitle);
 
-  emoting.create(questionTitle).done((result) => {
+  emoting.create(questionTitle).done(function(result) {
     console.log('[OK] Redirecting to', result.id, result.admin_uuid);
     window.location.hash = `#/${result.id}/${result.admin_uuid}`;
   }).fail((error) => {

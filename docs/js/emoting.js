@@ -40,7 +40,7 @@ const emoting = {
     handleHash();
   });
 
-  $(window).on('hashchange', () => {
+  $(window).on('hashchange', function() {
     handleHash();
   });
 

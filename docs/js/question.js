@@ -1,6 +1,6 @@
 const questionTemplate = Handlebars.compile($('#question-template').html());
 
-let currentQuestion;
+var currentQuestion;
 
 function showQuestion(questionId) {
   console.log('Retrieving question with id', questionId);
