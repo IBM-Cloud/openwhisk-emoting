@@ -16,7 +16,7 @@ function showAdmin(questionId, adminUuid) {
     // show the admin page
     $('#section-loading').fadeOut().hide();
     $('#default-layout').fadeIn().css('display', 'flex');
-  }).fail((error) => {
+  }).fail(function(error) {
     console.log('[KO]', error);
   });
 }

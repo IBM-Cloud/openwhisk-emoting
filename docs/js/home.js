@@ -21,7 +21,7 @@ $(document).on('submit', '#questionCreate', function(e) {
   emoting.create(questionTitle).done(function(result) {
     console.log('[OK] Redirecting to', result.id, result.admin_uuid);
     window.location.hash = `#/${result.id}/${result.admin_uuid}`;
-  }).fail((error) => {
+  }).fail(function(error) {
     console.log('[KO]', error);
   });
 });
