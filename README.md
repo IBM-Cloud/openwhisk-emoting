@@ -46,7 +46,7 @@ OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with
 
 1. Click ***Deploy to Bluemix*** to start the Bluemix DevOps wizard:
 
-   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/?repository=https://github.com/IBM-Bluemix/openwhisk-emoting&branch=master)
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.ng.bluemix.net/devops/setup/deploy/)
 
 1. Select the **GitHub** box.
 
