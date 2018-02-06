@@ -16,7 +16,7 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.2.3/css/bulma.min.css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/csshake/1.5.1/csshake.min.css" />
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/emoting.css">
@@ -48,19 +48,28 @@
 
   <section id="default-layout" class="hero is-fullheight">
     <div class="hero-head">
-      <header class="nav">
+      <nav class="navbar is-transparent">
         <div class="container">
-          <div class="nav-left">
-            <a href="" class="nav-item">
-              <img src="images/svg/logo.svg" class="logo" /> &nbsp; emoting
+          <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="">
+              <img src="images/svg/logo.svg" class="logo" alt="emoting" />
+            </a>
+            <a class="navbar-item navbar-title" href="">
+              &nbsp; emoting
             </a>
           </div>
-          <div class="nav-right">
-            <a href="https://github.com/IBM-Bluemix/openwhisk-emoting" class="nav-item"><span class="icon"><i class="fa fa-github"></i></span></a>
-            <a href="https://twitter.com/l2fprod" class="nav-item"><span class="icon"><i class="fa fa-twitter"></i></span></a>
+          <div class="navbar-menu">
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <a href="https://github.com/IBM-Cloud/openwhisk-emoting" class="nav-item"><span class="navbar-icon"><i class="fa fa-github"></i></span></a>
+              </div>
+              <div class="navbar-item">
+                  <a href="https://twitter.com/l2fprod" class="nav-item"><span class="navbar-icon"><i class="fa fa-twitter"></i></span></a>
+              </div>
+            </div>
           </div>
         </div>
-      </header>
+      </nav>
     </div>
     <div class="hero-body" id="default-layout-body">
       <!-- placeholder for page body -->
@@ -76,10 +85,14 @@
     <div class="container has-text-centered">
       <div class="tagline">SIMPLY. CAPTURE. FEEDBACK.</div>
       <form id="questionCreate" data-toggle="validator">
-        <p class="control has-addons">
-          <input type="text" class="input new-event" name="title" id="title" placeholder="Ask a question" required autofocus/>
-          <button type="submit" class="button is-success new-event">Get Feedback</button>
-        </p>
+        <div class="field has-addons">
+          <div class="control new-event-container">
+            <input type="text" class="input new-event" name="title" id="title" placeholder="Ask a question" required autofocus/>
+          </div>
+          <div class="control">
+            <button type="submit" class="button is-success new-event">Get Feedback</button>
+          </div>
+        </div>
       </form>
       <div class="bottomline">
         Looking for inspiration? How about
@@ -111,10 +124,29 @@
 
       <div class="content">
         When you are ready to collect feedback, share <strong><a href="{{url}}">the following link</a></strong> with your audience:
-        <p class="control question-url has-addons">
-          <input class="input is-medium is-info" id="questionUrl" type="text" value={{url}} readonly>
-          <button class="button is-medium is-info copyToClipboard" data-clipboard-target="#questionUrl">Copy</button>
-        </p>
+        <div class="field has-addons question-url-container">
+          <div class="control question-url">
+            <input class="input is-medium is-info" id="questionUrl" type="text" value={{url}} readonly>
+          </div>
+          <div class="control">
+            <button class="button is-medium is-info copyToClipboard" data-clipboard-target="#questionUrl">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        If you have enabled the SMS gateway, you can also assign a shortcode to your question.
+        Usees will be able to send the shortcode followed by an emoticon to capture their feedback.
+        <form id="questionShortcode" data-toggle="validator">
+          <div class="field has-addons shortcode-container">
+          <div class="control shortcode">
+            <input class="input is-medium is-info" id="shortcode" type="text" placeholder="e.g HAPPY">
+          </div>
+          <div class="control">
+            <button id="applyShortcode" class="button is-medium is-info">Apply</button>
+          </div>
+        </div>
+        </form>
       </div>
 
       <div class="content">

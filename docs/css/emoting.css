@@ -20,6 +20,19 @@ b, strong {
   height: 24px;
 }
 
+.navbar-logo {
+  padding-right: 0;
+}
+
+.navbar-title {
+  padding: 0;
+}
+
+.navbar-icon {
+  font-size: 24px;
+  color: grey;
+}
+
 #section-loading,
 #section-home,
 #section-admin,
@@ -30,15 +43,19 @@ b, strong {
 /**
  * HOME
  */
+.new-event-container {
+  width: 100% !important;
+}
+
 input.new-event {
   height: 60px;
-  line-height: 30px;
+  line-height: 20px;
   font-size: 30px;
-  width: 100% !important;
 }
 
 button.new-event {
   height: 60px;
+  line-height: 20px;
   font-size: 30px;
 }
 
@@ -94,12 +111,14 @@ button.new-event {
   background-color: #de2d2d;
 }
 
-.question-url {
+.question-url-container,
+.shortcode-container {
   margin: 30px;
 }
 
-.question-url input {
-  width: 100% !important;
+.question-url,
+.shortcode {
+  width: 100%;
 }
 
 /**

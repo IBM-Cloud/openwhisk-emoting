@@ -31,6 +31,14 @@ const emoting = {
       contentType: 'application/json; charset=utf-8',
       dataType: 'json'
     });
+  },
+  setShortcode(questionId, adminUuid, shortcode) {
+    return $.ajax({
+      type: 'POST',
+      url: `${apiUrl}/questions/shortcode`,
+      data: JSON.stringify({ shortcode }),
+      dataType: 'json',
+    });
   }
 };
 

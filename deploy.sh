@@ -52,18 +52,29 @@ function install() {
     -a description 'Get a question results'\
     actions/question.stats.js \
     --web true --annotation final true
+  wsk action create $PACKAGE_NAME/questionShortcode\
+    -a description 'Set a question SMS shortcode'\
+    actions/question.shortcode.js \
+    --web true --annotation final true
+
   wsk action create $PACKAGE_NAME/ratingCreate\
     -a description 'Create a new rating'\
     actions/rating.create.js \
+    --web true --annotation final true
+  wsk action create $PACKAGE_NAME/ratingBySMS\
+    -a description 'Handles the incoming SMS vote'\
+    actions/rating.bysms.js \
     --web true --annotation final true
 }
 
 function uninstall() {
   echo "Removing actions..."
+  wsk action delete $PACKAGE_NAME/ratingBySMS
   wsk action delete $PACKAGE_NAME/ratingCreate
   wsk action delete $PACKAGE_NAME/questionCreate
   wsk action delete $PACKAGE_NAME/questionRead
   wsk action delete $PACKAGE_NAME/questionStats
+  wsk action delete $PACKAGE_NAME/questionShortcode
 
   echo "Removing package..."
   wsk package delete $PACKAGE_NAME
@@ -77,7 +88,9 @@ function update() {
   wsk action update $PACKAGE_NAME/questionCreate    actions/question.create.js
   wsk action update $PACKAGE_NAME/questionRead      actions/question.read.js
   wsk action update $PACKAGE_NAME/questionStats     actions/question.stats.js
+  wsk action update $PACKAGE_NAME/questionShortcode actions/question.shortcode.js
   wsk action update $PACKAGE_NAME/ratingCreate      actions/rating.create.js
+  wsk action update $PACKAGE_NAME/ratingBySMS       actions/rating.bysms.js
 }
 
 function showenv() {
@@ -90,10 +103,12 @@ function showenv() {
 function installApi() {
   wsk api create /emoting/1 /questions       PUT     emoting/questionCreate --response-type json
   wsk api create /emoting/1 /questions       GET     emoting/questionRead --response-type json
+  wsk api create /emoting/1 /questions/shortcode POST     emoting/questionShortcode --response-type json
 
   wsk api create /emoting/1 /stats           GET     emoting/questionStats --response-type json
 
   wsk api create /emoting/1 /ratings         PUT     emoting/ratingCreate --response-type json
+  wsk api create /emoting/1 /ratings/bysms   POST    emoting/ratingBySMS  --response-type json
 }
 
 function uninstallApi() {
