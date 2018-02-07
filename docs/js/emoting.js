@@ -36,7 +36,10 @@ const emoting = {
     return $.ajax({
       type: 'POST',
       url: `${apiUrl}/questions/shortcode`,
-      data: JSON.stringify({ shortcode }),
+      data: {
+        id: questionId,
+        admin: adminUuid,
+        shortcode },
       dataType: 'json',
     });
   }
