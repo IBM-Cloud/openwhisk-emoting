@@ -40,6 +40,9 @@ function install() {
     -p services.cloudant.questions $CLOUDANT_QUESTIONS_DATABASE\
     -p services.cloudant.ratings $CLOUDANT_RATINGS_DATABASE\
     -p services.cloudant.shortcodes $CLOUDANT_SHORTCODES_DATABASE\
+    -p services.nexmo.api_key "$NEXMO_API_KEY"\
+    -p services.nexmo.api_secret "$NEXMO_API_SECRET"\
+    -p services.nexmo.from "$NEXMO_FROM"\
 
   echo "Creating actions"
   bx wsk action create $PACKAGE_NAME/questionCreate\
