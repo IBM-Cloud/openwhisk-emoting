@@ -16,8 +16,9 @@ b, strong {
 }
 
 .logo {
-  width: 24px;
-  height: 24px;
+  width: 64px;
+  height: 64px;
+  max-height: 64px !important;
 }
 
 .navbar-logo {
@@ -26,6 +27,7 @@ b, strong {
 
 .navbar-title {
   padding: 0;
+  font-size: 40px;
 }
 
 .navbar-icon {
