@@ -1,4 +1,4 @@
-const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/53c5e3d4519bd8dc04e7f599d1322296564124349c916705557963ca5090374c/emoting/1';
+const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/478d2549e52d97fcf5121e94214965b9f9461d1688901278ed591ef32ddeb2ff/emoting/1';
 const ratingChoices = ['verygood', 'good', 'bad', 'verybad'];
 const emoting = {
   create(questionTitle) {
@@ -30,6 +30,17 @@ const emoting = {
       url: `${apiUrl}/stats?id=${questionId}&admin=${adminUuid}`,
       contentType: 'application/json; charset=utf-8',
       dataType: 'json'
+    });
+  },
+  setShortcode(questionId, adminUuid, shortcode) {
+    return $.ajax({
+      type: 'POST',
+      url: `${apiUrl}/questions/shortcode`,
+      data: {
+        id: questionId,
+        admin: adminUuid,
+        shortcode },
+      dataType: 'json',
     });
   }
 };
