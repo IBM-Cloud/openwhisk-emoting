@@ -15,6 +15,9 @@ function setSampleQuestion(title) {
 $(document).on('submit', '#questionCreate', function(e) {
   e.preventDefault();
 
+  // animate the submit button during the create
+  $('#submit').addClass('is-loading');
+
   const questionTitle = $('#title').val();
   console.log('Submitting question', questionTitle);
 
@@ -23,5 +26,8 @@ $(document).on('submit', '#questionCreate', function(e) {
     window.location.hash = `#/${result.id}/${result.admin_uuid}`;
   }).fail(function(error) {
     console.log('[KO]', error);
+
+    // restore the button behavior in case of failure
+    $('#submit').removeClass('is-loading');
   });
 });

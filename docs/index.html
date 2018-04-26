@@ -90,7 +90,7 @@
             <input type="text" class="input new-event" name="title" id="title" placeholder="Ask a question" required autofocus/>
           </div>
           <div class="control">
-            <button type="submit" class="button is-success new-event">Get Feedback</button>
+            <button id="submit" type="submit" class="button is-success new-event">Get Feedback</button>
           </div>
         </div>
       </form>
@@ -153,7 +153,7 @@
         <h3>Current Results ({{total}})</h3>
         <div class="columns">
           <div class="column is-2 has-text-right">
-            <span class="icon"><img src="images/svg/alternate-verygood.svg" /></span>
+            <span class="icon"><img src="images/svg/verygood.svg" /></span>
           </div>
           <div class="column">
             <progress class="progress progress-verygood is-medium" value="{{ratings.[verygood].percent}}" max="100"></progress>
@@ -164,7 +164,7 @@
         </div>
         <div class="columns">
           <div class="column is-2 has-text-right">
-            <span class="icon"><img src="images/svg/alternate-good.svg" /></span>
+            <span class="icon"><img src="images/svg/good.svg" /></span>
           </div>
           <div class="column">
             <progress class="progress progress-good is-medium" value="{{ratings.[good].percent}}" max="100"></progress>
@@ -175,7 +175,7 @@
         </div>
         <div class="columns">
           <div class="column is-2 has-text-right">
-            <span class="icon"><img src="images/svg/alternate-bad.svg" /></span>
+            <span class="icon"><img src="images/svg/bad.svg" /></span>
           </div>
           <div class="column">
             <progress class="progress progress-bad is-medium" value="{{ratings.[bad].percent}}" max="100"></progress>
@@ -186,7 +186,7 @@
         </div>
         <div class="columns">
           <div class="column is-2 has-text-right">
-            <span class="icon"><img src="images/svg/alternate-verybad.svg" /></span>
+            <span class="icon"><img src="images/svg/verybad.svg" /></span>
           </div>
           <div class="column">
             <progress class="progress progress-verybad is-medium" value="{{ratings.[verybad].percent}}" max="100"></progress>
@@ -204,16 +204,16 @@
       <h1 class="event-title" id="question-title">{{question.title}}</h1>
       <div class="columns ratings">
         <div class="column">
-          <img class="rating" data-shake="shake-vertical" data-value="verygood" src="images/svg/alternate-verygood.svg" width="100%" />
+          <img class="rating" data-shake="shake-vertical" data-value="verygood" src="images/svg/verygood.svg" width="100%" />
         </div>
         <div class="column">
-          <img class="rating" data-shake="shake-vertical" data-value="good" src="images/svg/alternate-good.svg" width="100%" />
+          <img class="rating" data-shake="shake-vertical" data-value="good" src="images/svg/good.svg" width="100%" />
         </div>
         <div class="column">
-          <img class="rating" data-shake="shake-horizontal" data-value="bad" src="images/svg/alternate-bad.svg" width="100%" />
+          <img class="rating" data-shake="shake-horizontal" data-value="bad" src="images/svg/bad.svg" width="100%" />
         </div>
         <div class="column">
-          <img class="rating" data-shake="shake-horizontal" data-value="verybad" src="images/svg/alternate-verybad.svg" width="100%" />
+          <img class="rating" data-shake="shake-horizontal" data-value="verybad" src="images/svg/verybad.svg" width="100%" />
         </div>
       </div>
     </div>
