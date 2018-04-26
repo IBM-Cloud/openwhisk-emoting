@@ -18,6 +18,10 @@
 source local.env
 PACKAGE_NAME=emoting
 
+if [ -z "$WSK" ]; then
+  WSK=wsk
+fi
+
 function usage() {
   echo "Usage: $0 [--install,--uninstall,--update,--installApi,--uninstallApi,--env]"
 }
@@ -35,7 +39,7 @@ function install() {
   curl -s -X POST -H 'Content-Type: application/json' -d @ratings-designs.json $CLOUDANT_URL/$CLOUDANT_RATINGS_DATABASE/_bulk_docs | grep -v conflict
 
   echo "Creating $PACKAGE_NAME package"
-  bx wsk package create $PACKAGE_NAME\
+  $WSK package create $PACKAGE_NAME\
     -p services.cloudant.url $CLOUDANT_URL\
     -p services.cloudant.questions $CLOUDANT_QUESTIONS_DATABASE\
     -p services.cloudant.ratings $CLOUDANT_RATINGS_DATABASE\
@@ -45,35 +49,35 @@ function install() {
     -p services.nexmo.from "$NEXMO_FROM"\
 
   echo "Creating actions"
-  bx wsk action create $PACKAGE_NAME/questionCreate\
+  $WSK action create $PACKAGE_NAME/questionCreate\
     -a description 'Create a new question'\
     actions/question.create.js \
     --web true --annotation final true
-  bx wsk action create $PACKAGE_NAME/questionRead\
+  $WSK action create $PACKAGE_NAME/questionRead\
     -a description 'Get a question'\
     actions/question.read.js \
     --web true --annotation final true
-  bx wsk action create $PACKAGE_NAME/questionStats\
+  $WSK action create $PACKAGE_NAME/questionStats\
     -a description 'Get a question results'\
     actions/question.stats.js \
     --web true --annotation final true
-  bx wsk action create $PACKAGE_NAME/questionShortcode\
+  $WSK action create $PACKAGE_NAME/questionShortcode\
     -a description 'Set a question SMS shortcode'\
     actions/question.shortcode.js \
     --web true --annotation final true
 
-  bx wsk action create $PACKAGE_NAME/ratingCreate\
+  $WSK action create $PACKAGE_NAME/ratingCreate\
     -a description 'Create a new rating'\
     actions/rating.create.js \
     --web true --annotation final true
-  bx wsk action create $PACKAGE_NAME/ratingByShortcode\
+  $WSK action create $PACKAGE_NAME/ratingByShortcode\
     -a description 'Handles the incoming SMS vote'\
     actions/rating.byshortcode.js
-  bx wsk action create $PACKAGE_NAME/ratingByNexmo\
+  $WSK action create $PACKAGE_NAME/ratingByNexmo\
     -a description 'Handles the NEXMO SMS vote'\
     actions/rating.nexmo.js
 
-  bx wsk action create $PACKAGE_NAME/ratingByShortcode-sequence \
+  $WSK action create $PACKAGE_NAME/ratingByShortcode-sequence \
     $PACKAGE_NAME/ratingByNexmo,$PACKAGE_NAME/ratingByShortcode,$PACKAGE_NAME/ratingCreate \
     --sequence \
     --web true --annotation final true
@@ -81,31 +85,31 @@ function install() {
 
 function uninstall() {
   echo "Removing actions..."
-  bx wsk action delete $PACKAGE_NAME/ratingByShortcode-sequence
-  bx wsk action delete $PACKAGE_NAME/ratingByNexmo
-  bx wsk action delete $PACKAGE_NAME/ratingByShortcode
-  bx wsk action delete $PACKAGE_NAME/ratingCreate
-  bx wsk action delete $PACKAGE_NAME/questionCreate
-  bx wsk action delete $PACKAGE_NAME/questionRead
-  bx wsk action delete $PACKAGE_NAME/questionStats
-  bx wsk action delete $PACKAGE_NAME/questionShortcode
+  $WSK action delete $PACKAGE_NAME/ratingByShortcode-sequence
+  $WSK action delete $PACKAGE_NAME/ratingByNexmo
+  $WSK action delete $PACKAGE_NAME/ratingByShortcode
+  $WSK action delete $PACKAGE_NAME/ratingCreate
+  $WSK action delete $PACKAGE_NAME/questionCreate
+  $WSK action delete $PACKAGE_NAME/questionRead
+  $WSK action delete $PACKAGE_NAME/questionStats
+  $WSK action delete $PACKAGE_NAME/questionShortcode
 
   echo "Removing package..."
-  bx wsk package delete $PACKAGE_NAME
+  $WSK package delete $PACKAGE_NAME
 
   echo "Done"
-  bx wsk list
+  $WSK list
 }
 
 function update() {
   echo "Updating actions..."
-  bx wsk action update $PACKAGE_NAME/questionCreate    actions/question.create.js
-  bx wsk action update $PACKAGE_NAME/questionRead      actions/question.read.js
-  bx wsk action update $PACKAGE_NAME/questionStats     actions/question.stats.js
-  bx wsk action update $PACKAGE_NAME/questionShortcode actions/question.shortcode.js
-  bx wsk action update $PACKAGE_NAME/ratingCreate      actions/rating.create.js
-  bx wsk action update $PACKAGE_NAME/ratingByShortcode actions/rating.byshortcode.js
-  bx wsk action update $PACKAGE_NAME/ratingByNexmo     actions/rating.nexmo.js
+  $WSK action update $PACKAGE_NAME/questionCreate    actions/question.create.js
+  $WSK action update $PACKAGE_NAME/questionRead      actions/question.read.js
+  $WSK action update $PACKAGE_NAME/questionStats     actions/question.stats.js
+  $WSK action update $PACKAGE_NAME/questionShortcode actions/question.shortcode.js
+  $WSK action update $PACKAGE_NAME/ratingCreate      actions/rating.create.js
+  $WSK action update $PACKAGE_NAME/ratingByShortcode actions/rating.byshortcode.js
+  $WSK action update $PACKAGE_NAME/ratingByNexmo     actions/rating.nexmo.js
 }
 
 function showenv() {
@@ -116,19 +120,19 @@ function showenv() {
 }
 
 function installApi() {
-  bx wsk api create /emoting/1 /questions           PUT     $PACKAGE_NAME/questionCreate --response-type json
-  bx wsk api create /emoting/1 /questions           GET     $PACKAGE_NAME/questionRead --response-type json
-  bx wsk api create /emoting/1 /questions/shortcode POST    $PACKAGE_NAME/questionShortcode --response-type json
+  $WSK api create /emoting/1 /questions           PUT     $PACKAGE_NAME/questionCreate --response-type json
+  $WSK api create /emoting/1 /questions           GET     $PACKAGE_NAME/questionRead --response-type json
+  $WSK api create /emoting/1 /questions/shortcode POST    $PACKAGE_NAME/questionShortcode --response-type json
 
-  bx wsk api create /emoting/1 /stats               GET     $PACKAGE_NAME/questionStats --response-type json
+  $WSK api create /emoting/1 /stats               GET     $PACKAGE_NAME/questionStats --response-type json
 
-  bx wsk api create /emoting/1 /ratings             PUT     $PACKAGE_NAME/ratingCreate --response-type json
-  bx wsk api create /emoting/1 /ratings/nexmo       POST    $PACKAGE_NAME/ratingByShortcode-sequence  --response-type json
-  bx wsk api create /emoting/1 /ratings/nexmo       GET    $PACKAGE_NAME/ratingByShortcode-sequence  --response-type json
+  $WSK api create /emoting/1 /ratings             PUT     $PACKAGE_NAME/ratingCreate --response-type json
+  $WSK api create /emoting/1 /ratings/nexmo       POST    $PACKAGE_NAME/ratingByShortcode-sequence  --response-type json
+  $WSK api create /emoting/1 /ratings/nexmo       GET    $PACKAGE_NAME/ratingByShortcode-sequence  --response-type json
 }
 
 function uninstallApi() {
-  bx wsk api delete /emoting/1
+  $WSK api delete /emoting/1
 }
 
 function recycle() {
