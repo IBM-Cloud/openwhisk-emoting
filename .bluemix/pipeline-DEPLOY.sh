@@ -47,6 +47,10 @@ if [ -z "$CLOUDANT_RATINGS_DATABASE" ]; then
   export CLOUDANT_RATINGS_DATABASE=ratings
 fi
 
+if [ -z "$CLOUDANT_SHORTCODES_DATABASE" ]; then
+  export CLOUDANT_SHORTCODES_DATABASE=shortcodes
+fi
+
 ################################################################
 # OpenWhisk artifacts
 ################################################################
