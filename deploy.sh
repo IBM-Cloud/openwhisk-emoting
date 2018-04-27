@@ -41,9 +41,9 @@ function install() {
   echo "Creating $PACKAGE_NAME package"
   $WSK package create $PACKAGE_NAME\
     -p services.cloudant.url $CLOUDANT_URL\
-    -p services.cloudant.questions $CLOUDANT_QUESTIONS_DATABASE\
-    -p services.cloudant.ratings $CLOUDANT_RATINGS_DATABASE\
-    -p services.cloudant.shortcodes $CLOUDANT_SHORTCODES_DATABASE\
+    -p services.cloudant.questions "$CLOUDANT_QUESTIONS_DATABASE"\
+    -p services.cloudant.ratings "$CLOUDANT_RATINGS_DATABASE"\
+    -p services.cloudant.shortcodes "$CLOUDANT_SHORTCODES_DATABASE"\
     -p services.nexmo.api_key "$NEXMO_API_KEY"\
     -p services.nexmo.api_secret "$NEXMO_API_SECRET"\
     -p services.nexmo.from "$NEXMO_FROM"\
@@ -52,30 +52,30 @@ function install() {
   $WSK action create $PACKAGE_NAME/questionCreate\
     -a description 'Create a new question'\
     actions/question.create.js \
-    --web true --annotation final true
+    --kind nodejs:8 --web true --annotation final true
   $WSK action create $PACKAGE_NAME/questionRead\
     -a description 'Get a question'\
     actions/question.read.js \
-    --web true --annotation final true
+    --kind nodejs:8 --web true --annotation final true
   $WSK action create $PACKAGE_NAME/questionStats\
     -a description 'Get a question results'\
     actions/question.stats.js \
-    --web true --annotation final true
+    --kind nodejs:8 --web true --annotation final true
   $WSK action create $PACKAGE_NAME/questionShortcode\
     -a description 'Set a question SMS shortcode'\
     actions/question.shortcode.js \
-    --web true --annotation final true
+    --kind nodejs:8 --web true --annotation final true
 
   $WSK action create $PACKAGE_NAME/ratingCreate\
     -a description 'Create a new rating'\
     actions/rating.create.js \
-    --web true --annotation final true
+    --kind nodejs:8 --web true --annotation final true
   $WSK action create $PACKAGE_NAME/ratingByShortcode\
     -a description 'Handles the incoming SMS vote'\
-    actions/rating.byshortcode.js
+    --kind nodejs:8 actions/rating.byshortcode.js
   $WSK action create $PACKAGE_NAME/ratingByNexmo\
     -a description 'Handles the NEXMO SMS vote'\
-    actions/rating.nexmo.js
+    --kind nodejs:8 actions/rating.nexmo.js
 
   $WSK action create $PACKAGE_NAME/ratingByShortcode-sequence \
     $PACKAGE_NAME/ratingByNexmo,$PACKAGE_NAME/ratingByShortcode,$PACKAGE_NAME/ratingCreate \
@@ -103,13 +103,13 @@ function uninstall() {
 
 function update() {
   echo "Updating actions..."
-  $WSK action update $PACKAGE_NAME/questionCreate    actions/question.create.js
-  $WSK action update $PACKAGE_NAME/questionRead      actions/question.read.js
-  $WSK action update $PACKAGE_NAME/questionStats     actions/question.stats.js
-  $WSK action update $PACKAGE_NAME/questionShortcode actions/question.shortcode.js
-  $WSK action update $PACKAGE_NAME/ratingCreate      actions/rating.create.js
-  $WSK action update $PACKAGE_NAME/ratingByShortcode actions/rating.byshortcode.js
-  $WSK action update $PACKAGE_NAME/ratingByNexmo     actions/rating.nexmo.js
+  $WSK action update $PACKAGE_NAME/questionCreate    --kind nodejs:8 actions/question.create.js
+  $WSK action update $PACKAGE_NAME/questionRead      --kind nodejs:8 actions/question.read.js
+  $WSK action update $PACKAGE_NAME/questionStats     --kind nodejs:8 actions/question.stats.js
+  $WSK action update $PACKAGE_NAME/questionShortcode --kind nodejs:8 actions/question.shortcode.js
+  $WSK action update $PACKAGE_NAME/ratingCreate      --kind nodejs:8 actions/rating.create.js
+  $WSK action update $PACKAGE_NAME/ratingByShortcode --kind nodejs:8 actions/rating.byshortcode.js
+  $WSK action update $PACKAGE_NAME/ratingByNexmo     --kind nodejs:8 actions/rating.nexmo.js
 }
 
 function showenv() {
