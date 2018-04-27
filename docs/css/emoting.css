@@ -25,6 +25,11 @@ b, strong {
   padding-right: 0;
 }
 
+.navbar-burger {
+  height: 80px;
+  width: 80px;
+}
+
 .navbar-title {
   padding: 0;
   font-size: 40px;
