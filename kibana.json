@@ -1,32 +1,32 @@
 [
   {
-    "_id": "42f99d2a-09ea-4952-8a55-74b8e217db41_Emoting",
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_Emoting",
     "_type": "dashboard",
     "_source": {
       "description": "",
-      "group": "42f99d2a-09ea-4952-8a55-74b8e217db41",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
       "hits": 0,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[{\"query\":{\"query_string\":{\"analyze_wildcard\":true,\"query\":\"*\"}}}]}"
+        "searchSourceJSON": "{\n  \"filter\": [\n    {\n      \"query\": {\n        \"query_string\": {\n          \"analyze_wildcard\": true,\n          \"query\": \"*\"\n        }\n      }\n    }\n  ]\n}"
       },
-      "optionsJSON": "{\"darkTheme\":false}",
-      "panelsJSON": "[{\"col\":1,\"id\":\"42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-by-name\",\"panelIndex\":1,\"row\":1,\"size_x\":9,\"size_y\":6,\"type\":\"visualization\"},{\"col\":10,\"id\":\"42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-count\",\"panelIndex\":2,\"row\":1,\"size_x\":3,\"size_y\":2,\"type\":\"visualization\"},{\"col\":10,\"id\":\"42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-table\",\"panelIndex\":3,\"row\":3,\"size_x\":3,\"size_y\":4,\"type\":\"visualization\"}]",
+      "optionsJSON": "{\n  \"darkTheme\": false\n}",
+      "panelsJSON": "[\n  {\n    \"col\": 1,\n    \"id\": \"9799844c-7181-4dc9-8a0e-4a4a34904495_All-activation-records-by-name\",\n    \"panelIndex\": 1,\n    \"row\": 4,\n    \"size_x\": 12,\n    \"size_y\": 3,\n    \"type\": \"visualization\"\n  },\n  {\n    \"col\": 1,\n    \"id\": \"42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-count\",\n    \"panelIndex\": 2,\n    \"row\": 1,\n    \"size_x\": 3,\n    \"size_y\": 3,\n    \"type\": \"visualization\"\n  },\n  {\n    \"col\": 4,\n    \"id\": \"42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-table\",\n    \"panelIndex\": 3,\n    \"row\": 1,\n    \"size_x\": 3,\n    \"size_y\": 3,\n    \"type\": \"visualization\"\n  },\n  {\n    \"col\": 10,\n    \"id\": \"9799844c-7181-4dc9-8a0e-4a4a34904495_Ratings-(Pie)\",\n    \"panelIndex\": 4,\n    \"row\": 7,\n    \"size_x\": 3,\n    \"size_y\": 3,\n    \"type\": \"visualization\"\n  },\n  {\n    \"col\": 1,\n    \"id\": \"9799844c-7181-4dc9-8a0e-4a4a34904495_Ratings-(Lines)\",\n    \"panelIndex\": 5,\n    \"row\": 7,\n    \"size_x\": 9,\n    \"size_y\": 5,\n    \"type\": \"visualization\"\n  },\n  {\n    \"col\": 7,\n    \"id\": \"9799844c-7181-4dc9-8a0e-4a4a34904495_Duration\",\n    \"panelIndex\": 6,\n    \"row\": 1,\n    \"size_x\": 6,\n    \"size_y\": 3,\n    \"type\": \"visualization\"\n  }\n]",
       "refreshInterval": {
         "display": "5 seconds",
         "pause": false,
         "section": 1,
         "value": 5000
       },
-      "timeFrom": "now/d",
+      "timeFrom": "now-4h",
       "timeRestore": true,
-      "timeTo": "now/d",
+      "timeTo": "now",
       "title": "Emoting",
-      "uiStateJSON": "{\"P-3\":{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}}",
+      "uiStateJSON": "{\n  \"P-3\": {\n    \"vis\": {\n      \"params\": {\n        \"sort\": {\n          \"columnIndex\": null,\n          \"direction\": null\n        }\n      }\n    }\n  },\n  \"P-6\": {\n    \"vis\": {\n      \"params\": {\n        \"sort\": {\n          \"columnIndex\": 4,\n          \"direction\": \"desc\"\n        }\n      }\n    }\n  },\n  \"P-4\": {\n    \"spy\": {\n      \"mode\": {\n        \"name\": null,\n        \"fill\": false\n      }\n    }\n  },\n  \"P-5\": {\n    \"vis\": {\n      \"legendOpen\": false\n    }\n  }\n}",
       "version": 1
     }
   },
   {
-    "_id": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records",
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records",
     "_type": "search",
     "_source": {
       "columns": [
@@ -37,7 +37,7 @@
         "end_date"
       ],
       "description": "",
-      "group": "42f99d2a-09ea-4952-8a55-74b8e217db41",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
       "hits": 0,
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"index\":\"[logstash-9799844c-7181-4dc9-8a0e-4a4a34904495-]YYYY.MM.DD\",\"query\":{\"query_string\":{\"query\":\"_type:activation_record\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
@@ -51,27 +51,36 @@
     }
   },
   {
-    "_id": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-by-name",
-    "_type": "visualization",
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_All-ratings-records",
+    "_type": "search",
     "_source": {
+      "columns": [
+        "name_str",
+        "duration_int",
+        "@timestamp",
+        "time_date",
+        "end_date"
+      ],
       "description": "",
-      "group": "42f99d2a-09ea-4952-8a55-74b8e217db41",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
+      "hits": 0,
       "kibanaSavedObjectMeta": {
-        "searchSourceJSON": "{\"filter\":[]}"
+        "searchSourceJSON": "{\"index\":\"[logstash-9799844c-7181-4dc9-8a0e-4a4a34904495-]YYYY.MM.DD\",\"query\":{\"query_string\":{\"query\":\"_type:activation_record AND name_str:\\\"*ratingCreate*\\\"\",\"analyze_wildcard\":true}},\"filter\":[],\"highlight\":{\"pre_tags\":[\"@kibana-highlighted-field@\"],\"post_tags\":[\"@/kibana-highlighted-field@\"],\"fields\":{\"*\":{}},\"require_field_match\":false,\"fragment_size\":2147483647}}"
       },
-      "savedSearchId": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records",
-      "title": "All activation records by name",
-      "uiStateJSON": "{\"vis\":{\"legendOpen\":true}}",
-      "version": 1,
-      "visState": "{\"title\":\"All activation records by name\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":true,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"name_str.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}"
+      "sort": [
+        "@timestamp",
+        "desc"
+      ],
+      "title": "All ratings records",
+      "version": 1
     }
   },
   {
-    "_id": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-table",
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-table",
     "_type": "visualization",
     "_source": {
       "description": "",
-      "group": "42f99d2a-09ea-4952-8a55-74b8e217db41",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
       },
@@ -83,11 +92,11 @@
     }
   },
   {
-    "_id": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-count",
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records-count",
     "_type": "visualization",
     "_source": {
       "description": "",
-      "group": "42f99d2a-09ea-4952-8a55-74b8e217db41",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
       "kibanaSavedObjectMeta": {
         "searchSourceJSON": "{\"filter\":[]}"
       },
@@ -96,6 +105,70 @@
       "uiStateJSON": "{}",
       "version": 1,
       "visState": "{\"title\":\"All activation records count\",\"type\":\"metric\",\"params\":{\"handleNoResults\":true,\"fontSize\":\"80\"},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{\"customLabel\":\"Activations\"}}],\"listeners\":{}}"
+    }
+  },
+  {
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_Ratings-(Pie)",
+    "_type": "visualization",
+    "_source": {
+      "description": "",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      },
+      "savedSearchId": "9799844c-7181-4dc9-8a0e-4a4a34904495_All-ratings-records",
+      "title": "Ratings (Pie)",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "visState": "{\"title\":\"Ratings (Pie)\",\"type\":\"pie\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"isDonut\":true},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"filters\",\"schema\":\"segment\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"verygood\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"1. verygood\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"good\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"2. good\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"bad\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"3. bad\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"verybad\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"4. verybad\"}]}}],\"listeners\":{}}"
+    }
+  },
+  {
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_Duration",
+    "_type": "visualization",
+    "_source": {
+      "description": "",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      },
+      "savedSearchId": "9799844c-7181-4dc9-8a0e-4a4a34904495_42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records",
+      "title": "Duration",
+      "uiStateJSON": "{\"vis\":{\"params\":{\"sort\":{\"columnIndex\":null,\"direction\":null}}}}",
+      "version": 1,
+      "visState": "{\"title\":\"Duration\",\"type\":\"table\",\"params\":{\"perPage\":5,\"showPartialRows\":false,\"showMeticsAtAllLevels\":false,\"sort\":{\"columnIndex\":null,\"direction\":null},\"showTotal\":false,\"totalFunc\":\"sum\"},\"aggs\":[{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"bucket\",\"params\":{\"field\":\"name_str.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"_term\",\"customLabel\":\"Actions\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"min\",\"schema\":\"metric\",\"params\":{\"field\":\"duration_int\",\"customLabel\":\"Min (ms)\"}},{\"id\":\"5\",\"enabled\":true,\"type\":\"max\",\"schema\":\"metric\",\"params\":{\"field\":\"duration_int\",\"customLabel\":\"Max (ms)\"}},{\"id\":\"1\",\"enabled\":true,\"type\":\"avg\",\"schema\":\"metric\",\"params\":{\"field\":\"duration_int\",\"customLabel\":\"Average (ms)\"}},{\"id\":\"6\",\"enabled\":true,\"type\":\"median\",\"schema\":\"metric\",\"params\":{\"field\":\"duration_int\",\"percents\":[50],\"customLabel\":\"Median (ms)\"}}],\"listeners\":{}}"
+    }
+  },
+  {
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_Ratings-(Lines)",
+    "_type": "visualization",
+    "_source": {
+      "description": "",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      },
+      "savedSearchId": "9799844c-7181-4dc9-8a0e-4a4a34904495_All-ratings-records",
+      "title": "Ratings (Lines)",
+      "uiStateJSON": "{}",
+      "version": 1,
+      "visState": "{\"title\":\"Ratings (Lines)\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{},\"orderBucketsBySum\":false},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"filters\",\"schema\":\"split\",\"params\":{\"filters\":[{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"verygood\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"1. verygood\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"good\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"2. good\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"bad\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"3. bad\"},{\"input\":{\"query\":{\"query_string\":{\"query\":\"message:\\\"\\\\\\\"value\\\\\\\":\\\\\\\"verybad\\\\\\\"\\\"\",\"analyze_wildcard\":true}}},\"label\":\"4. verybad\"}],\"row\":true}},{\"id\":\"3\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}"
+    }
+  },
+  {
+    "_id": "9799844c-7181-4dc9-8a0e-4a4a34904495_All-activation-records-by-name",
+    "_type": "visualization",
+    "_source": {
+      "description": "",
+      "group": "9799844c-7181-4dc9-8a0e-4a4a34904495",
+      "kibanaSavedObjectMeta": {
+        "searchSourceJSON": "{\"filter\":[]}"
+      },
+      "savedSearchId": "42f99d2a-09ea-4952-8a55-74b8e217db41_All-activation-records",
+      "title": "All activation records by name",
+      "uiStateJSON": "{\"vis\":{\"legendOpen\":true}}",
+      "version": 1,
+      "visState": "{\"title\":\"All activation records by name\",\"type\":\"line\",\"params\":{\"shareYAxis\":true,\"addTooltip\":true,\"addLegend\":true,\"legendPosition\":\"right\",\"showCircles\":true,\"smoothLines\":false,\"interpolate\":\"linear\",\"scale\":\"linear\",\"drawLinesBetweenPoints\":true,\"radiusRatio\":9,\"times\":[],\"addTimeMarker\":false,\"defaultYExtents\":false,\"setYExtents\":false,\"yAxis\":{}},\"aggs\":[{\"id\":\"1\",\"enabled\":true,\"type\":\"count\",\"schema\":\"metric\",\"params\":{}},{\"id\":\"2\",\"enabled\":true,\"type\":\"terms\",\"schema\":\"group\",\"params\":{\"field\":\"name_str.keyword\",\"size\":5,\"order\":\"desc\",\"orderBy\":\"1\"}},{\"id\":\"3\",\"enabled\":true,\"type\":\"date_histogram\",\"schema\":\"segment\",\"params\":{\"field\":\"@timestamp\",\"interval\":\"auto\",\"customInterval\":\"2h\",\"min_doc_count\":1,\"extended_bounds\":{}}}],\"listeners\":{}}"
     }
   }
 ]
