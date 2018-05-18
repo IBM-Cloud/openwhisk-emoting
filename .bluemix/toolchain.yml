@@ -15,7 +15,7 @@ services:
     service_id: githubpublic
     parameters:
       repo_name: 'openwhisk-emoting'
-      repo_url: 'https://github.com/IBM-Bluemix/openwhisk-emoting'
+      repo_url: 'https://github.com/IBM-Cloud/openwhisk-emoting'
       type: fork
       has_issues: false
   build:

@@ -1,6 +1,6 @@
 # Capture audience feedback with a serverless app
 
-[![Build Status](https://travis-ci.org/IBM-Bluemix/openwhisk-emoting.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/openwhisk-emoting) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/openwhisk-emoting/badge.svg?branch=master)](https://coveralls.io/github/IBM-Bluemix/openwhisk-emoting?branch=master)
+[![Build Status](https://travis-ci.org/IBM-Cloud/openwhisk-emoting.svg?branch=master)](https://travis-ci.org/IBM-Cloud/openwhisk-emoting) [![Coverage Status](https://coveralls.io/repos/github/IBM-Cloud/openwhisk-emoting/badge.svg?branch=master)](https://coveralls.io/github/IBM-Cloud/openwhisk-emoting?branch=master)
 
 You are giving this presentation and as attendees leave the room you'd like to get a quick feel about how you did. *Emoting* mimics the smiley terminals you may see at the airport security or whenever you are queueing somewhere.
 
@@ -17,7 +17,7 @@ Built using the IBM Bluemix, the application uses:
 
 No runtime to deploy, no server to manage :)
 
-![Alt text](https://g.gravizo.com/source/architecture?https%3A%2F%2Fraw.githubusercontent.com%2FIBM-Bluemix%2Fopenwhisk-emoting%2Fmaster%2FREADME.md)
+![Alt text](https://g.gravizo.com/source/architecture?https%3A%2F%2Fraw.githubusercontent.com%2FIBM-Cloud%2Fopenwhisk-emoting%2Fmaster%2FREADME.md)
 <details>
 <summary></summary>
 architecture
@@ -46,7 +46,7 @@ OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with
 
 1. Click ***Deploy to Bluemix*** to start the Bluemix DevOps wizard:
 
-   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.bluemix.net/devops/setup/deploy/?repository=https%3A%2F%2Fgithub.com/IBM-Bluemix/openwhisk-emoting&branch=master)
+   [![Deploy To Bluemix](https://console.ng.bluemix.net/devops/graphics/create_toolchain_button.png)](https://console.bluemix.net/devops/setup/deploy/?repository=https%3A%2F%2Fgithub.com/IBM-Cloud/openwhisk-emoting&branch=master)
 
 1. Select the **GitHub** box.
 
@@ -93,7 +93,7 @@ OpenWhisk Emoting comes with a toolchain you can use to deploy the solution with
 
 ## Deploying OpenWhisk Emoting manually in Bluemix
 
-1. Clone or fork the repository https://github.com/IBM-Bluemix/openwhisk-emoting
+1. Clone or fork the repository https://github.com/IBM-Cloud/openwhisk-emoting
 
 1. Checkout the code
 
