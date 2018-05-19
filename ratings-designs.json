@@ -9,6 +9,18 @@
         "stats": {
           "map": "function (doc) {\n  emit([doc.question, doc.value], 1);\n}",
           "reduce": "_sum"
+        },
+        "stats-by-day": {
+          "reduce": "_count",
+          "map": "function (doc) {\n  emit([doc.question, doc.created_at.substring(0, 10) + \"T00:00:00.000Z\", doc.value], 1);\n}"
+        },
+        "stats-by-hour": {
+          "reduce": "_count",
+          "map": "function (doc) {\n  emit([doc.question, doc.created_at.substring(0, 13) + \":00:00.000Z\", doc.value], 1);\n}"
+        },
+        "stats-by-minute": {
+          "reduce": "_count",
+          "map": "function (doc) {\n  emit([doc.question, doc.created_at.substring(0, 16) + \":00.000Z\", doc.value], 1);\n}"
         }
       },
       "language": "javascript"

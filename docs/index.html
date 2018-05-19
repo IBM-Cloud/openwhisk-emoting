@@ -116,46 +116,22 @@
         <hr/>
       </div>
 
-      <article class="message is-danger">
-        <div class="message-header">
-          Don't lose your stats!
-        </div>
-        <div class="message-body">
-          This is the admin page for your feedback.
-          This link is unique and we won't send it back to you.
-          <strong>Bookmark it now!</strong>
-        </div>
-      </article>
-
+      {{#if hasResults}}
       <div class="content">
-        When you are ready to collect feedback, share <strong><a href="{{url}}">the following link</a></strong> with your audience:
-        <div class="field has-addons question-url-container">
-          <div class="control question-url">
-            <input class="input is-medium is-info" id="questionUrl" type="text" value={{url}} readonly>
+        <h3>Stats</h3>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="chart-container">
+              <canvas id="stats-chart"></canvas>
+            </div>    
           </div>
-          <div class="control">
-            <button class="button is-medium is-info copyToClipboard" data-clipboard-target="#questionUrl">Copy</button>
-          </div>
-        </div>
-      </div>
-
-      <div class="content">
-        If you have enabled the SMS gateway, you can also assign a shortcode to your question.
-        Usees will be able to send the shortcode followed by an emoticon to capture their feedback.
-        <form id="questionShortcode" data-toggle="validator">
-          <div class="field has-addons shortcode-container">
-          <div class="control shortcode">
-            <input class="input is-medium is-info" id="shortcode" type="text" placeholder="e.g HAPPY">
-          </div>
-          <div class="control">
-            <button id="applyShortcode" class="button is-medium is-info">Apply</button>
+          <div class="column">
+            <div class="chart-container">
+              <canvas id="chart-doughnut"></canvas>
+            </div>
           </div>
         </div>
-        </form>
-      </div>
 
-      <div class="content">
-        <h3>Current Results ({{total}})</h3>
         <div class="columns">
           <div class="column is-2 has-text-right">
             <span class="icon"><img src="images/svg/verygood.svg" /></span>
@@ -201,6 +177,50 @@
           </div>
         </div>
       </div>
+      {{/if}}
+
+      {{#unless hasResults}}
+      <article class="message is-danger">
+        <div class="message-header">
+          Don't lose your stats!
+        </div>
+        <div class="message-body">
+          This is the admin page for your feedback.
+          This link is unique and we won't send it back to you.
+          <strong>Bookmark it now!</strong>
+        </div>
+      </article>
+      {{/unless}}
+
+      <div class="content">
+        <h3>Get Feedback</h3>
+        Share <strong><a href="{{url}}">the following link</a></strong> with your audience to collect feedback:
+        <div class="field has-addons question-url-container">
+          <div class="control question-url">
+            <input class="input is-medium is-info" id="questionUrl" type="text" value={{url}} readonly>
+          </div>
+          <div class="control">
+            <button class="button is-medium is-info copyToClipboard" data-clipboard-target="#questionUrl">Copy</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <h3>Rate by SMS</h3>
+        If you have enabled the SMS gateway, you can also assign a shortcode to your question.
+        Users will be able to send the shortcode followed by an emoticon to capture their feedback.
+        <form id="questionShortcode" data-toggle="validator">
+          <div class="field has-addons shortcode-container">
+          <div class="control shortcode">
+            <input class="input is-medium is-info" id="shortcode" type="text" placeholder="e.g HAPPY">
+          </div>
+          <div class="control">
+            <button id="applyShortcode" class="button is-medium is-info">Apply</button>
+          </div>
+        </div>
+        </form>
+      </div>
+
     </div>
   </script>
 
@@ -224,6 +244,7 @@
     </div>
   </script>
 
+  <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.min.js" integrity="sha256-XF29CBwU1MWLaGEnsELogU6Y6rcc5nCkhhx89nFMIDQ=" crossorigin="anonymous"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.6/handlebars.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.16/clipboard.min.js"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

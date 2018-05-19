@@ -9,7 +9,7 @@ function showQuestion(questionId) {
     currentQuestion = question;
 
     const context = {};
-    context.ratingChoices = ratingChoices;
+    context.ratingChoices = ratingChoices.keys;
     context.question = question;
 
     $('#empty-layout-body').html(questionTemplate(context));

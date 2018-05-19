@@ -1,5 +1,18 @@
-const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/478d2549e52d97fcf5121e94214965b9f9461d1688901278ed591ef32ddeb2ff/emoting/1';
-const ratingChoices = ['verygood', 'good', 'bad', 'verybad'];
+const apiUrl = 'https://service.us.apiconnect.ibmcloud.com/gws/apigateway/api/454f8d6ad3e7ee74ac910322975ed5eafcc7d4096497a18b1942aeb1c9ead398/emoting/1';
+const ratingChoices = {
+  verygood: {
+    color: '#189834'
+  },
+  good: {
+    color: '#7cb34d'
+  },
+  bad: {
+    color: '#d96251'
+  },
+  verybad: {
+    color: '#de2d2d'
+  }
+};
 const emoting = {
   create(questionTitle) {
     return $.ajax({
